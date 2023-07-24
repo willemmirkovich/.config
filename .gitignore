@@ -1,0 +1,9 @@
+# Ignore everything
+/*
+
+# Include these
+!.gitignore
+!/bin
+# manually added /zsh/.zshrc with git add -f
+!alacritty.yml
+!starship.toml

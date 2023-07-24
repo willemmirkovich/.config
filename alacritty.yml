@@ -124,14 +124,15 @@ window:
 # Font configuration
 font:
   # Normal (roman) font face
-  #normal:
+  normal:
     # Font family
     #
     # Default:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    #family: monospace
+    # NOTE: can be found in fontbook app for mac
+    family: Hack Nerd Font
 
     # The `style` can be specified to pick a specific face.
     #style: Regular

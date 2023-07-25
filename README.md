@@ -13,6 +13,7 @@
     - `brew tap homebrew/cask-fonts`
     - `brew install --cask font-hack-nerd-font`
 - [starship](https://starship.rs/): `brew install starship`
+- [tmux](https://github.com/tmux/tmux): `brew install tmux`
 
 ## Setup
 1. Make sure zsh is default shell: `echo $SHELL`

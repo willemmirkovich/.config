@@ -75,6 +75,8 @@ eval "$(starship init zsh)"
 
 source ~/.zshrc
 
+TABSIZE=1
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment

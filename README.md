@@ -19,3 +19,7 @@
 ## Setup
 1. Make sure zsh is default shell: `echo $SHELL`
 2. 
+
+## TODO
+
+1. jupyter notebook nvim setup: https://github.com/kiyoon/jupynium.nvim

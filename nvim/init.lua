@@ -33,6 +33,9 @@ vim.keymap.set('', '<Space>', '<Nop>')
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+-- colorscheme
+-- vim.cmd('colorscheme kanagawa')
+
 -- options
 
 -- default yank to clibboard
@@ -55,7 +58,8 @@ vim.api.nvim_create_autocmd({'FileType'}, {
 -- search
 vim.opt.smartcase = true
 
-vim.opt.termguicolors = true
+-- TODO: determine if should turn back on, messes up color coord with starship theme
+-- vim.opt.termguicolors = true
 
 -- keymaps -> https://neovim.io/doc/user/lua-guide.html#lua-guide-mappings
 -- NOTE: ([mode(s)], '[from]', '[to]')

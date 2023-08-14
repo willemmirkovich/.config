@@ -25,6 +25,11 @@ vim.keymap.set('', '<Space>', '<Nop>')
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+-- options
+
+-- default yank to clibboard
+vim.opt.clipboard = 'unnamedplus'
+
 -- numbering
 vim.opt.number = true
 vim.opt.relativenumber = true

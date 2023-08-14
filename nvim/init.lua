@@ -16,6 +16,10 @@ plugins = {
 	{
 		'nvim-telescope/telescope.nvim', tag = '0.1.2',
 		dependencies = { 'nvim-lua/plenary.nvim', tag = '0.1.3' }
+	},
+	{
+		'alexghergh/nvim-tmux-navigation', 
+		commit = '543f090a45cef28156162883d2412fffecb6b750'
 	}
 }
 require('lazy').setup(plugins) -- can add opts
@@ -56,13 +60,17 @@ vim.keymap.set({'n', 'v'}, 'd', '"_d')
 vim.keymap.set('n', '<S-l>', ':bnext<CR>')
 vim.keymap.set('n', '<S-h>', ':bprevious<CR>')
 
--- navigate splits (after navigating tmux splits)
--- TODO: need to get new package for tmux/nvim navigation
--- vim.keymap.set('n', '<C-h>', '<C-w>h')
--- vim.keymap.set('n', '<C-j>', '<C-w>j')
--- vim.keymap.set('n', '<C-k>', '<C-w>k')
--- vim.keymap.set('n', '<C-l>', '<C-w>l')
--- vim.keymap.set('n', '<C-d>', '<C-w>q')
+-- navigate splits & tmux panes
+local nvim_tmux_nav = require('nvim-tmux-navigation')
+nvim_tmux_nav.setup {
+	disable_when_zoomed = true
+}
+vim.keymap.set('n', "<C-h>", nvim_tmux_nav.NvimTmuxNavigateLeft)
+vim.keymap.set('n', "<C-j>", nvim_tmux_nav.NvimTmuxNavigateDown)
+vim.keymap.set('n', "<C-k>", nvim_tmux_nav.NvimTmuxNavigateUp)
+vim.keymap.set('n', "<C-l>", nvim_tmux_nav.NvimTmuxNavigateRight)
+vim.keymap.set('n', "<C-\\>", nvim_tmux_nav.NvimTmuxNavigateLastActive)
+vim.keymap.set('n', "<C-Space>", nvim_tmux_nav.NvimTmuxNavigateNext)
 
 -- telescope keymaps
 local telescope_builtin = require('telescope.builtin')

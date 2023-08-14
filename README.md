@@ -12,6 +12,7 @@
 - [starship](https://starship.rs/): `brew install starship`
 - [tmux](https://github.com/tmux/tmux): `brew install tmux`
 - [ripgrep](https://github.com/BurntSushi/ripgrep): `brew install ripgrep`
+- [lazygit](TODO:): `brew install lazygit`
 
 ## Nice to have
 
@@ -20,6 +21,13 @@
 ## Setup
 
 1. Make sure zsh is default shell: `echo $SHELL`
+2. Add following lines to your `.zshenv` file:
+```
+# NOTE: required for .config setup
+ZDOTDIR=~/.config/zsh
+
+# NOTE: below, specific to this machine
+```
 
 ## TODO
 

@@ -24,6 +24,10 @@ plugins = {
 	{
 		'akinsho/bufferline.nvim', tag = 'v4.3.0',
 		dependencies = { 'nvim-tree/nvim-web-devicons', commit = 'ab899311f8ae00a47eae8e0879506cead8eb1561' }
+	},
+	{
+		'kdheepak/lazygit.nvim', commit = '22e51e03268fabe068a77e2bd316ac25ff2084f9',
+		dependencies = { 'nvim-lua/plenary.nvim', tag = '0.1.3' }
 	}
 }
 require('lazy').setup(plugins) -- can add opts
@@ -105,3 +109,6 @@ require('bufferline').setup{
 		}
 	}
 }
+
+-- lazygit
+vim.keymap.set('n', '<leader>lg', ':LazyGit<CR>', {})

@@ -6,6 +6,7 @@
 - [alacritty terminal emulator](https://alacritty.org/): `brew install alacritty`
 - [neovim editor](https://neovim.io/): `brew install neovim`
 - [ohmyzsh](https://github.com/ohmyzsh/ohmyzsh/wiki#welcome-to-oh-my-zsh)
+- [font-hack-nerd](https://www.nerdfonts.com/)
     - `brew tap homebrew/cask-fonts`
     - `brew install --cask font-hack-nerd-font`
 - [starship](https://starship.rs/): `brew install starship`
@@ -17,9 +18,13 @@
 - [btop](https://github.com/aristocratos/btop): `brew install btop`
 
 ## Setup
+
 1. Make sure zsh is default shell: `echo $SHELL`
-2. 
 
 ## TODO
 
-1. jupyter notebook nvim setup: https://github.com/kiyoon/jupynium.nvim
+1. Fix true colors with alacritty/tmux
+
+## FUTURE
+
+- [ ] jupyter notebook nvim setup: https://github.com/kiyoon/jupynium.nvim

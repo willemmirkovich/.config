@@ -69,7 +69,8 @@ vim.keymap.set({'n', 'v'}, 'd', '"_d')
 
 -- all help commands open vertical split
 vim.keymap.set({'c', 'n'}, 'help', 'vert help')
-vim.keymap.set({'c', 'n'}, 'h', 'vert h')
+-- NOTE: below will remap every 'h' to below when typing, doesn't work
+-- vim.keymap.set({'c', 'n'}, 'h', 'vert h')
 
 -- navigate buffers in nvim split
 vim.keymap.set('n', '<S-l>', ':bnext<CR>')

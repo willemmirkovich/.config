@@ -20,6 +20,10 @@ plugins = {
 	{
 		'alexghergh/nvim-tmux-navigation', 
 		commit = '543f090a45cef28156162883d2412fffecb6b750'
+	},
+	{
+		'akinsho/bufferline.nvim', tag = 'v4.3.0',
+		dependencies = { 'nvim-tree/nvim-web-devicons', commit = 'ab899311f8ae00a47eae8e0879506cead8eb1561' }
 	}
 }
 require('lazy').setup(plugins) -- can add opts
@@ -51,10 +55,17 @@ vim.api.nvim_create_autocmd({'FileType'}, {
 -- search
 vim.opt.smartcase = true
 
+vim.opt.termguicolors = true
+
 -- keymaps -> https://neovim.io/doc/user/lua-guide.html#lua-guide-mappings
 -- NOTE: ([mode(s)], '[from]', '[to]')
+
 -- all delete operations go to black hole register
 vim.keymap.set({'n', 'v'}, 'd', '"_d')
+
+-- all help commands open vertical split
+vim.keymap.set({'c', 'n'}, 'help', 'vert help')
+vim.keymap.set({'c', 'n'}, 'h', 'vert h')
 
 -- navigate buffers in nvim split
 vim.keymap.set('n', '<S-l>', ':bnext<CR>')
@@ -80,3 +91,12 @@ vim.keymap.set('n', '<leader>fa', ':Telescope find_files find_command=rg,--no-ig
 vim.keymap.set('n', '<leader>fg', telescope_builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', telescope_builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', telescope_builtin.help_tags, {})
+
+-- bufferline
+require('bufferline').setup{
+	options = {
+		indicator = {
+			style = 'underline'
+		}
+	}
+}

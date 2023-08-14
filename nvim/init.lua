@@ -75,6 +75,8 @@ vim.keymap.set('n', "<C-Space>", nvim_tmux_nav.NvimTmuxNavigateNext)
 -- telescope keymaps
 local telescope_builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', telescope_builtin.find_files, {})
+-- NOTE: may be able to include multiple glob patterns here
+vim.keymap.set('n', '<leader>fa', ':Telescope find_files find_command=rg,--no-ignore,--hidden,--files,--glob,!.git<CR>')
 vim.keymap.set('n', '<leader>fg', telescope_builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', telescope_builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', telescope_builtin.help_tags, {})

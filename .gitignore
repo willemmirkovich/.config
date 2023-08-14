@@ -3,8 +3,10 @@
 
 # Include these
 !.gitignore
+!README.md
 !/bin
 # manually added /zsh/.zshrc with git add -f
+!/zsh/.zshrc
 !alacritty.yml
 !starship.toml
 !/tmux

@@ -5,6 +5,7 @@
 - [brew installer](https://brew.sh/): Available for Mac/Linux
 - [alacritty terminal emulator](https://alacritty.org/): `brew install alacritty`
 - [neovim editor](https://neovim.io/): `brew install neovim`
+- [node/npm](TODO:): `brew install node`
 - [ohmyzsh](https://github.com/ohmyzsh/ohmyzsh/wiki#welcome-to-oh-my-zsh)
 - [font-hack-nerd](https://www.nerdfonts.com/)
     - `brew tap homebrew/cask-fonts`

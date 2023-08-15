@@ -12,13 +12,20 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-plugins = {
+local plugins = {
+	{
+		'neovim/nvim-lspconfig', commit = 'a687466cfe8556abb067386d61c8ad6a39df9b75',
+		dependencies = {
+			{ 'williamboman/mason-lspconfig.nvim', tag = 'v1.12.0' },
+			{ 'williamboman/mason.nvim', tag = 'v1.6.2' }
+		}
+	},
 	{
 		'nvim-telescope/telescope.nvim', tag = '0.1.2',
 		dependencies = { 'nvim-lua/plenary.nvim', tag = '0.1.3' }
 	},
 	{
-		'alexghergh/nvim-tmux-navigation', 
+		'alexghergh/nvim-tmux-navigation',
 		commit = '543f090a45cef28156162883d2412fffecb6b750'
 	},
 	{
@@ -112,3 +119,43 @@ require('bufferline').setup{
 
 -- lazygit
 vim.keymap.set('n', '<leader>lg', ':LazyGit<CR>', {})
+
+-- lsp
+-- mason
+require('mason').setup()
+
+-- mason-lspconfig
+require('mason-lspconfig').setup{
+	ensure_installed = {
+		'lua_ls', -- lua
+		'pyright', -- python
+		'marksman', -- markdown
+		'bashls', -- bash
+		'dockerls', -- docker
+		'docker_compose_language_service', -- docker-compose
+		'jsonls', -- json
+		'sqlls', -- sql
+		'yamlls', -- yaml
+	}
+}
+
+-- nvim-lspconfig
+-- TODO: refactor to either dynamic mason setup or simpler
+require('lspconfig').lua_ls.setup{
+	settings = {
+		Lua = {
+			diagnostics = {
+				globals = { 'vim' }
+			}
+		}
+	}
+}
+require('lspconfig').pyright.setup{}
+require('lspconfig').marksman.setup{}
+-- TODO: configure to look at files without .sh file extension
+require('lspconfig').bashls.setup{}
+require('lspconfig').dockerls.setup{}
+require('lspconfig').docker_compose_language_service.setup{}
+require('lspconfig').jsonls.setup{}
+require('lspconfig').sqlls.setup{}
+require('lspconfig').yamlls.setup{}

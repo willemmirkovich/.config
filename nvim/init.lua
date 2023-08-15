@@ -35,6 +35,9 @@ local plugins = {
 	{
 		'kdheepak/lazygit.nvim', commit = '22e51e03268fabe068a77e2bd316ac25ff2084f9',
 		dependencies = { 'nvim-lua/plenary.nvim', tag = '0.1.3' }
+	},
+	{
+		'nmac427/guess-indent.nvim', commit = 'b8ae749fce17aa4c267eec80a6984130b94f80b2'
 	}
 }
 require('lazy').setup(plugins) -- can add opts
@@ -43,6 +46,10 @@ require('lazy').setup(plugins) -- can add opts
 vim.keymap.set('', '<Space>', '<Nop>')
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
+
+-- tabs -> spaces and 4 spaces by default, will be overidden with guess-indent
+vim.g.tabstop = 4
+vim.g.expandtab = true
 
 -- colorscheme
 -- vim.cmd('colorscheme kanagawa')
@@ -119,6 +126,9 @@ require('bufferline').setup{
 
 -- lazygit
 vim.keymap.set('n', '<leader>lg', ':LazyGit<CR>', {})
+
+-- guess-indent
+require('guess-indent').setup{}
 
 -- lsp
 -- mason

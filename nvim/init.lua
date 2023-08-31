@@ -73,6 +73,9 @@ vim.api.nvim_create_autocmd({'FileType'}, {
 	command = 'set formatoptions-=c formatoptions-=r formatoptions-=o'
 })
 
+-- swapfiles
+vim.opt.swapfile = false
+
 -- search
 vim.opt.smartcase = true
 

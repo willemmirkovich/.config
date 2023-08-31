@@ -86,7 +86,8 @@ vim.opt.smartcase = true
 vim.keymap.set({'n', 'v'}, 'd', '"_d')
 
 -- all help commands open vertical split
-vim.keymap.set({'c', 'n'}, 'help', 'vert help')
+-- NOTE: do not add to normal mode, will slow down 'h' motion
+vim.keymap.set('c', 'help', 'vert help')
 -- NOTE: below will remap every 'h' to below when typing, doesn't work
 -- vim.keymap.set({'c', 'n'}, 'h', 'vert h')
 

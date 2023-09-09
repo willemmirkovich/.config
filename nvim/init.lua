@@ -146,7 +146,7 @@ require('mason-lspconfig').setup{
 	ensure_installed = {
 		'lua_ls', -- lua
 		'pyright', -- python
-		'marksman', -- markdown
+		'prosemd_lsp', -- markdown
 		'bashls', -- bash
 		'dockerls', -- docker
 		'docker_compose_language_service', -- docker-compose
@@ -168,7 +168,7 @@ require('lspconfig').lua_ls.setup{
 	}
 }
 require('lspconfig').pyright.setup{}
-require('lspconfig').marksman.setup{}
+require('lspconfig').prosemd_lsp.setup{}
 -- TODO: configure to look at files without .sh file extension
 require('lspconfig').bashls.setup{}
 require('lspconfig').dockerls.setup{}

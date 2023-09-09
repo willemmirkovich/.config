@@ -41,6 +41,10 @@ local plugins = {
 	},
 	{
 		'nmac427/guess-indent.nvim', commit = 'b8ae749fce17aa4c267eec80a6984130b94f80b2'
+	},
+	{
+		'nvim-tree/nvim-tree.lua', commit = '8f48426c88cd91aa33610c96ad649f378d7bf718',
+		dependencies = { 'nvim-tree/nvim-web-devicons', commit = 'ecdeb4e2a4af34fc873bbfbf1f4c4e447e632255' }
 	}
 }
 require('lazy').setup(plugins) -- can add opts
@@ -178,7 +182,7 @@ require('lspconfig').sqlls.setup{}
 require('lspconfig').yamlls.setup{}
 
 -- nvim-treesitter
-require('nvim-treesitter.configs').setup {
+require('nvim-treesitter.configs').setup{
 	ensure_installed = {
 		'c', 'lua', 'vim', 'vimdoc', 'query', -- should always be installed
 		'python', 'markdown_inline', 'javascript', 'typescript'
@@ -188,3 +192,9 @@ require('nvim-treesitter.configs').setup {
 	}
 
 }
+
+-- nvim-tree
+require('nvim-tree').setup{}
+
+-- nvim-tree keymaps
+vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>')

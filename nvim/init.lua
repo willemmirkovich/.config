@@ -21,6 +21,9 @@ local plugins = {
 		}
 	},
 	{
+		'nvim-treesitter/nvim-treesitter', commit = 'dfcfdb0e7bcb362c4de1ed7d0015c21957c91ba7'
+	},
+	{
 		'nvim-telescope/telescope.nvim', tag = '0.1.2',
 		dependencies = { 'nvim-lua/plenary.nvim', tag = '0.1.3' }
 	},
@@ -173,3 +176,12 @@ require('lspconfig').docker_compose_language_service.setup{}
 require('lspconfig').jsonls.setup{}
 require('lspconfig').sqlls.setup{}
 require('lspconfig').yamlls.setup{}
+
+-- nvim-treesitter
+require('nvim-treesitter.configs').setup {
+	ensure_installed = {
+		'c', 'lua', 'vim', 'vimdoc', 'query', -- should always be installed
+		'python', 'markdown', 'javascript', 'typescript'
+	}
+
+}

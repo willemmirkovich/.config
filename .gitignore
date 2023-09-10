@@ -1,13 +1,10 @@
-# Ignore everything
-/*
+# Ignore everything in subdirs or by filetype in top dir
+/*/*
+/*.log
 
-# Include these
-!.gitignore
-!README.md
-!/bin
+# Include these subdirs/subdir files
+!/bin/*
 # manually added /zsh/.zshrc with git add -f
 !/zsh/.zshrc
-!alacritty.yml
-!starship.toml
 !/tmux/tmux.conf
-!/nvim
+!/nvim/*

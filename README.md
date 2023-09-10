@@ -14,6 +14,7 @@
 - [tmux](https://github.com/tmux/tmux): `brew install tmux`
 - [ripgrep](https://github.com/BurntSushi/ripgrep): `brew install ripgrep`
 - [lazygit](TODO:): `brew install lazygit`
+- [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm): `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
 
 ## Nice to have
 
@@ -29,11 +30,3 @@ ZDOTDIR=~/.config/zsh
 
 # NOTE: below, specific to this machine
 ```
-
-## TODO
-
-1. Fix true colors with alacritty/tmux
-
-## FUTURE
-
-- [ ] jupyter notebook nvim setup: https://github.com/kiyoon/jupynium.nvim

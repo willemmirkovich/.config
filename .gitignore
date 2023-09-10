@@ -9,5 +9,5 @@
 !/zsh/.zshrc
 !alacritty.yml
 !starship.toml
-!/tmux
+!/tmux/tmux.conf
 !/nvim

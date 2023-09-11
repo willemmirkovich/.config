@@ -21,11 +21,12 @@ local plugins = {
 		}
 	},
 	{
-		'nvim-treesitter/nvim-treesitter', commit = 'dfcfdb0e7bcb362c4de1ed7d0015c21957c91ba7'
+		'nvim-treesitter/nvim-treesitter', commit = 'dfcfdb0e7bcb362c4de1ed7d0015c21957c91ba7',
+		cmd = 'TSUpdate'
 	},
 	{
 		'nvim-telescope/telescope.nvim', tag = '0.1.2',
-		dependencies = { 'nvim-lua/plenary.nvim', tag = '0.1.3' }
+		dependencies = { 'nvim-lua/plenary.nvim', tag = 'v0.1.3' }
 	},
 	{
 		'alexghergh/nvim-tmux-navigation',
@@ -37,7 +38,7 @@ local plugins = {
 	},
 	{
 		'kdheepak/lazygit.nvim', commit = '22e51e03268fabe068a77e2bd316ac25ff2084f9',
-		dependencies = { 'nvim-lua/plenary.nvim', tag = '0.1.3' }
+		dependencies = { 'nvim-lua/plenary.nvim', tag = 'v0.1.3' }
 	},
 	{
 		'nmac427/guess-indent.nvim', commit = 'b8ae749fce17aa4c267eec80a6984130b94f80b2'

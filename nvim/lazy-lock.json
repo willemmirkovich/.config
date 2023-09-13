@@ -1,6 +1,8 @@
 {
   "bufferline.nvim": { "branch": "main", "commit": "d24378edc14a675c820a303b4512af3bbc5761e9" },
+  "dressing.nvim": { "branch": "master", "commit": "c1e1d5fa44fe08811b6ef4aadac2b50e602f9504" },
   "guess-indent.nvim": { "branch": "main", "commit": "b8ae749fce17aa4c267eec80a6984130b94f80b2" },
+  "jupynium.nvim": { "branch": "master", "commit": "29f04cf8db510f78be708f0b70bd62038f66fd66" },
   "lazy.nvim": { "branch": "main", "commit": "2a9354c7d2368d78cbd5575a51a2af5bd8a6ad01" },
   "lazygit.nvim": { "branch": "main", "commit": "22e51e03268fabe068a77e2bd316ac25ff2084f9" },
   "mason-lspconfig.nvim": { "branch": "main", "commit": "e86a4c84ff35240639643ffed56ee1c4d55f538e" },

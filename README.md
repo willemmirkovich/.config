@@ -15,6 +15,7 @@
 - [ripgrep](https://github.com/BurntSushi/ripgrep): `brew install ripgrep`
 - [lazygit](TODO:): `brew install lazygit`
 - [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm): `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
+- [geckodriver](https://github.com/mozilla/geckodriver): `brew install geckodriver`
 
 ## Nice to have
 
@@ -29,4 +30,11 @@
 ZDOTDIR=~/.config/zsh
 
 # NOTE: below, specific to this machine
+```
+3. Create `venv` for neovim to use
+```sh
+python3 -m venv ~/.venv/nvim
+source ~/.venv/nvim/bin/activate
+pip install --upgrade pip
+pip install jupyter ipykernel nbclassic
 ```

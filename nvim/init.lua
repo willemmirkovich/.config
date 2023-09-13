@@ -46,6 +46,12 @@ local plugins = {
 	{
 		'nvim-tree/nvim-tree.lua', commit = '8f48426c88cd91aa33610c96ad649f378d7bf718',
 		dependencies = { 'nvim-tree/nvim-web-devicons', commit = 'ecdeb4e2a4af34fc873bbfbf1f4c4e447e632255' }
+	},
+	{
+		'kiyoon/jupynium.nvim', build = 'source ~/.venv/nvim/bin/activate && pip install .',
+		dependencies = {
+			'stevearc/dressing.nvim' -- UI for kernel select
+		}
 	}
 }
 require('lazy').setup(plugins) -- can add opts
@@ -63,6 +69,8 @@ vim.g.expandtab = true
 -- vim.cmd('colorscheme kanagawa')
 
 -- options
+
+vim.g.python3_host_prog = '~/.venv/nvim/bin/python'
 
 -- default yank to clibboard
 vim.opt.clipboard = 'unnamedplus'
@@ -205,3 +213,7 @@ require('nvim-tree').setup{}
 
 -- nvim-tree keymaps
 vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>')
+
+require('jupynium').setup{
+	python_host = vim.g.python3_host_prog
+}

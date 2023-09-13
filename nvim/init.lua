@@ -158,6 +158,9 @@ require('mason-lspconfig').setup{
 		'jsonls', -- json
 		'sqlls', -- sql
 		'yamlls', -- yaml
+
+		-- NOTE: will remove after class complete
+		'julials', -- julia
 	}
 }
 
@@ -181,12 +184,15 @@ require('lspconfig').docker_compose_language_service.setup{}
 require('lspconfig').jsonls.setup{}
 require('lspconfig').sqlls.setup{}
 require('lspconfig').yamlls.setup{}
+require('lspconfig').julials.setup{}
 
 -- nvim-treesitter
 require('nvim-treesitter.configs').setup{
 	ensure_installed = {
 		'c', 'lua', 'vim', 'vimdoc', 'query', -- should always be installed
-		'python', 'markdown_inline', 'javascript', 'typescript'
+		'python', 'markdown_inline', 'javascript', 'typescript',
+		-- class, will remove
+		'commonlisp', 'julia', 'haskell'
 	},
 	highlight = {
 		enable = true

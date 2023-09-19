@@ -52,6 +52,9 @@ local plugins = {
 		dependencies = {
 			'stevearc/dressing.nvim' -- UI for kernel select
 		}
+	},
+	{
+		'numToStr/Comment.nvim', tag = 'v0.8.0'
 	}
 }
 require('lazy').setup(plugins) -- can add opts
@@ -214,6 +217,10 @@ require('nvim-tree').setup{}
 -- nvim-tree keymaps
 vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>')
 
+-- jupynium
 require('jupynium').setup{
 	python_host = vim.g.python3_host_prog
 }
+
+-- Comment
+require('Comment').setup{}

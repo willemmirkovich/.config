@@ -36,5 +36,5 @@ ZDOTDIR=~/.config/zsh
 python3 -m venv ~/.venv/nvim
 source ~/.venv/nvim/bin/activate
 pip install --upgrade pip
-pip install jupyter ipykernel nbclassic
+pip install jupyter ipykernel nbclassic pynvim neovim
 ```

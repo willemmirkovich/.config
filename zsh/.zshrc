@@ -106,3 +106,7 @@ alias src="source ~/.zshenv && source ~/.zshrc && source ~/.config/zsh/.zshrc"
 alias nv="nvim"
 
 alias pjson="python -m json.tool"
+
+venv_activate() {
+    . ~/.venv/${1}/bin/activate
+}

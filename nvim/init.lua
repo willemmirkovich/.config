@@ -14,10 +14,10 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
 	{
-		'neovim/nvim-lspconfig', commit = 'a687466cfe8556abb067386d61c8ad6a39df9b75',
+		'neovim/nvim-lspconfig',
 		dependencies = {
-			{ 'williamboman/mason-lspconfig.nvim', tag = 'v1.12.0' },
-			{ 'williamboman/mason.nvim', tag = 'v1.6.2' }
+			{ 'williamboman/mason-lspconfig.nvim' },
+			{ 'williamboman/mason.nvim' }
 		}
 	},
 	{

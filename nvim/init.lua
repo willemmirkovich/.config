@@ -17,7 +17,11 @@ local plugins = {
         'neovim/nvim-lspconfig',
         dependencies = {
             { 'williamboman/mason-lspconfig.nvim' },
-            { 'williamboman/mason.nvim' }
+            { 'williamboman/mason.nvim' },
+            { 'hrsh7th/nvim-cmp' }, -- Autocompletion plugin
+            { 'hrsh7th/cmp-nvim-lsp' }, -- LSP source for nvim-cmp
+            { 'saadparwaiz1/cmp_luasnip' }, -- Snippets source for nvim-cmp
+            { 'L3MON4D3/LuaSnip' }, -- Snippets plugin
         }
     },
     {
@@ -161,27 +165,40 @@ require('guess-indent').setup{}
 -- lsp
 -- mason
 require('mason').setup()
+local servers = {
+    'lua_ls', -- lua
+    'pyright', -- python
+    'prosemd_lsp', -- markdown
+    'bashls', -- bash
+    'dockerls', -- docker
+    'docker_compose_language_service', -- docker-compose
+    'jsonls', -- json
+    'sqlls', -- sql
+    'yamlls', -- yaml
+
+    -- NOTE: will remove after class complete
+    'julials', -- julia
+}
 
 -- mason-lspconfig
 require('mason-lspconfig').setup{
-    ensure_installed = {
-        'lua_ls', -- lua
-        'pyright', -- python
-        'prosemd_lsp', -- markdown
-        'bashls', -- bash
-        'dockerls', -- docker
-        'docker_compose_language_service', -- docker-compose
-        'jsonls', -- json
-        'sqlls', -- sql
-        'yamlls', -- yaml
-
-        -- NOTE: will remove after class complete
-        'julials', -- julia
-    }
+    ensure_installed = servers
 }
 
--- nvim-lspconfig
--- TODO: refactor to either dynamic mason setup or simpler
+-- Add additional capabilities supported by nvim-cmp
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+local lspconfig = require('lspconfig')
+
+-- Enable some language servers with the additional completion capabilities offered by nvim-cmp
+for _, lsp in ipairs(servers) do
+    lspconfig[lsp].setup {
+        -- on_attach = my_custom_on_attach,
+        capabilities = capabilities,
+    }
+end
+
+-- I am lazy and just had custom setup for this
 require('lspconfig').lua_ls.setup{
     settings = {
         Lua = {
@@ -189,18 +206,54 @@ require('lspconfig').lua_ls.setup{
                 globals = { 'vim' }
             }
         }
-    }
+    },
+    capabilities = capabilities,
 }
-require('lspconfig').pyright.setup{}
-require('lspconfig').prosemd_lsp.setup{}
--- TODO: configure to look at files without .sh file extension
-require('lspconfig').bashls.setup{}
-require('lspconfig').dockerls.setup{}
-require('lspconfig').docker_compose_language_service.setup{}
-require('lspconfig').jsonls.setup{}
-require('lspconfig').sqlls.setup{}
-require('lspconfig').yamlls.setup{}
-require('lspconfig').julials.setup{}
+
+-- luasnip setup
+local luasnip = require 'luasnip'
+
+-- nvim-cmp setup
+local cmp = require 'cmp'
+cmp.setup {
+    snippet = {
+        expand = function(args)
+            luasnip.lsp_expand(args.body)
+        end,
+    },
+    mapping = cmp.mapping.preset.insert({
+        ['<C-u>'] = cmp.mapping.scroll_docs(-4), -- Up
+        ['<C-d>'] = cmp.mapping.scroll_docs(4), -- Down
+        -- C-b (back) C-f (forward) for snippet placeholder navigation.
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<CR>'] = cmp.mapping.confirm {
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = true,
+        },
+        ['<Tab>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+                cmp.select_next_item()
+            elseif luasnip.expand_or_jumpable() then
+                luasnip.expand_or_jump()
+            else
+                fallback()
+            end
+        end, { 'i', 's' }),
+        ['<S-Tab>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+                cmp.select_prev_item()
+            elseif luasnip.jumpable(-1) then
+                luasnip.jump(-1)
+            else
+                fallback()
+            end
+        end, { 'i', 's' }),
+    }),
+    sources = {
+        { name = 'nvim_lsp' },
+        { name = 'luasnip' },
+    },
+}
 
 -- nvim-treesitter
 require('nvim-treesitter.configs').setup{

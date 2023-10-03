@@ -55,6 +55,9 @@ local plugins = {
 	},
 	{
 		'numToStr/Comment.nvim', tag = 'v0.8.0'
+	},
+	{
+		'folke/tokyonight.nvim'
 	}
 }
 require('lazy').setup(plugins) -- can add opts
@@ -69,7 +72,7 @@ vim.g.tabstop = 4
 vim.g.expandtab = true
 
 -- colorscheme
--- vim.cmd('colorscheme kanagawa')
+vim.cmd('colorscheme tokyonight-storm')
 
 -- options
 

@@ -1,64 +1,64 @@
 -- bootstrap lazy package manager
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    'git',
-    'clone',
-    '--filter=blob:none',
-    'https://github.com/folke/lazy.nvim.git',
-    '--branch=stable', -- latest stable release
-    lazypath,
-  })
+    vim.fn.system({
+        'git',
+        'clone',
+        '--filter=blob:none',
+        'https://github.com/folke/lazy.nvim.git',
+        '--branch=stable', -- latest stable release
+        lazypath,
+    })
 end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
-	{
-		'neovim/nvim-lspconfig',
-		dependencies = {
-			{ 'williamboman/mason-lspconfig.nvim' },
-			{ 'williamboman/mason.nvim' }
-		}
-	},
-	{
-		'nvim-treesitter/nvim-treesitter', commit = 'dfcfdb0e7bcb362c4de1ed7d0015c21957c91ba7',
-		cmd = 'TSUpdate'
-	},
-	{
-		'nvim-telescope/telescope.nvim', tag = '0.1.2',
-		dependencies = { 'nvim-lua/plenary.nvim', tag = 'v0.1.3' }
-	},
-	{
-		'alexghergh/nvim-tmux-navigation',
-		commit = '543f090a45cef28156162883d2412fffecb6b750'
-	},
-	{
-		'akinsho/bufferline.nvim', tag = 'v4.3.0',
-		dependencies = { 'nvim-tree/nvim-web-devicons', commit = 'ab899311f8ae00a47eae8e0879506cead8eb1561' }
-	},
-	{
-		'kdheepak/lazygit.nvim', commit = '22e51e03268fabe068a77e2bd316ac25ff2084f9',
-		dependencies = { 'nvim-lua/plenary.nvim', tag = 'v0.1.3' }
-	},
-	{
-		'nmac427/guess-indent.nvim', commit = 'b8ae749fce17aa4c267eec80a6984130b94f80b2'
-	},
-	{
-		'nvim-tree/nvim-tree.lua', commit = '8f48426c88cd91aa33610c96ad649f378d7bf718',
-		dependencies = { 'nvim-tree/nvim-web-devicons', commit = 'ecdeb4e2a4af34fc873bbfbf1f4c4e447e632255' }
-	},
-	{
-		'kiyoon/jupynium.nvim', build = 'source ~/.venv/nvim/bin/activate && pip install .',
-		dependencies = {
-			'stevearc/dressing.nvim' -- UI for kernel select
-		}
-	},
-	{
-		'numToStr/Comment.nvim', tag = 'v0.8.0'
-	},
-	{
-		'folke/tokyonight.nvim'
-	}
+    {
+        'neovim/nvim-lspconfig',
+        dependencies = {
+            { 'williamboman/mason-lspconfig.nvim' },
+            { 'williamboman/mason.nvim' }
+        }
+    },
+    {
+        'nvim-treesitter/nvim-treesitter', commit = 'dfcfdb0e7bcb362c4de1ed7d0015c21957c91ba7',
+        cmd = 'TSUpdate'
+    },
+    {
+        'nvim-telescope/telescope.nvim', tag = '0.1.2',
+        dependencies = { 'nvim-lua/plenary.nvim', tag = 'v0.1.3' }
+    },
+    {
+        'alexghergh/nvim-tmux-navigation',
+        commit = '543f090a45cef28156162883d2412fffecb6b750'
+    },
+    {
+        'akinsho/bufferline.nvim', tag = 'v4.3.0',
+        dependencies = { 'nvim-tree/nvim-web-devicons', commit = 'ab899311f8ae00a47eae8e0879506cead8eb1561' }
+    },
+    {
+        'kdheepak/lazygit.nvim', commit = '22e51e03268fabe068a77e2bd316ac25ff2084f9',
+        dependencies = { 'nvim-lua/plenary.nvim', tag = 'v0.1.3' }
+    },
+    {
+        'nmac427/guess-indent.nvim', commit = 'b8ae749fce17aa4c267eec80a6984130b94f80b2'
+    },
+    {
+        'nvim-tree/nvim-tree.lua', commit = '8f48426c88cd91aa33610c96ad649f378d7bf718',
+        dependencies = { 'nvim-tree/nvim-web-devicons', commit = 'ecdeb4e2a4af34fc873bbfbf1f4c4e447e632255' }
+    },
+    {
+        'kiyoon/jupynium.nvim', build = 'source ~/.venv/nvim/bin/activate && pip install .',
+        dependencies = {
+            'stevearc/dressing.nvim' -- UI for kernel select
+        }
+    },
+    {
+        'numToStr/Comment.nvim', tag = 'v0.8.0'
+    },
+    {
+        'folke/tokyonight.nvim'
+    }
 }
 require('lazy').setup(plugins) -- can add opts
 
@@ -68,8 +68,10 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- tabs -> spaces and 4 spaces by default, will be overidden with guess-indent
-vim.g.tabstop = 4
-vim.g.expandtab = true
+vim.opt.expandtab = true
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
 
 -- colorscheme
 vim.cmd('colorscheme tokyonight-storm')
@@ -91,8 +93,8 @@ vim.opt.numberwidth = 4
 -- fix: https://github.com/neovim/neovim/issues/14963#issuecomment-873338847
 -- discussion: https://stackoverflow.com/questions/6076592/vim-set-formatoptions-being-lost
 vim.api.nvim_create_autocmd({'FileType'}, {
-	pattern = '*',
-	command = 'set formatoptions-=c formatoptions-=r formatoptions-=o'
+    pattern = '*',
+    command = 'set formatoptions-=c formatoptions-=r formatoptions-=o'
 })
 
 -- swapfiles
@@ -123,7 +125,7 @@ vim.keymap.set('n', '<S-h>', ':bprevious<CR>')
 -- navigate splits & tmux panes
 local nvim_tmux_nav = require('nvim-tmux-navigation')
 nvim_tmux_nav.setup {
-	disable_when_zoomed = true
+    disable_when_zoomed = true
 }
 vim.keymap.set('n', "<C-h>", nvim_tmux_nav.NvimTmuxNavigateLeft)
 vim.keymap.set('n', "<C-j>", nvim_tmux_nav.NvimTmuxNavigateDown)
@@ -143,11 +145,11 @@ vim.keymap.set('n', '<leader>fh', telescope_builtin.help_tags, {})
 
 -- bufferline
 require('bufferline').setup{
-	options = {
-		indicator = {
-			style = 'underline'
-		}
-	}
+    options = {
+        indicator = {
+            style = 'underline'
+        }
+    }
 }
 
 -- lazygit
@@ -162,32 +164,32 @@ require('mason').setup()
 
 -- mason-lspconfig
 require('mason-lspconfig').setup{
-	ensure_installed = {
-		'lua_ls', -- lua
-		'pyright', -- python
-		'prosemd_lsp', -- markdown
-		'bashls', -- bash
-		'dockerls', -- docker
-		'docker_compose_language_service', -- docker-compose
-		'jsonls', -- json
-		'sqlls', -- sql
-		'yamlls', -- yaml
+    ensure_installed = {
+        'lua_ls', -- lua
+        'pyright', -- python
+        'prosemd_lsp', -- markdown
+        'bashls', -- bash
+        'dockerls', -- docker
+        'docker_compose_language_service', -- docker-compose
+        'jsonls', -- json
+        'sqlls', -- sql
+        'yamlls', -- yaml
 
-		-- NOTE: will remove after class complete
-		'julials', -- julia
-	}
+        -- NOTE: will remove after class complete
+        'julials', -- julia
+    }
 }
 
 -- nvim-lspconfig
 -- TODO: refactor to either dynamic mason setup or simpler
 require('lspconfig').lua_ls.setup{
-	settings = {
-		Lua = {
-			diagnostics = {
-				globals = { 'vim' }
-			}
-		}
-	}
+    settings = {
+        Lua = {
+            diagnostics = {
+                globals = { 'vim' }
+            }
+        }
+    }
 }
 require('lspconfig').pyright.setup{}
 require('lspconfig').prosemd_lsp.setup{}
@@ -202,16 +204,18 @@ require('lspconfig').julials.setup{}
 
 -- nvim-treesitter
 require('nvim-treesitter.configs').setup{
-	ensure_installed = {
-		'c', 'lua', 'vim', 'vimdoc', 'query', -- should always be installed
-		'python', 'markdown_inline', 'javascript', 'typescript',
-		-- class, will remove
-		'commonlisp', 'julia', 'haskell'
-	},
-	highlight = {
-		enable = true
-	}
-
+    ensure_installed = {
+        'c', 'lua', 'vim', 'vimdoc', 'query', -- should always be installed
+        'python', 'markdown_inline', 'javascript', 'typescript',
+        -- class, will remove
+        'commonlisp', 'julia', 'haskell'
+    },
+    highlight = {
+        enable = true
+    },
+    indent = {
+        enable = true
+    },
 }
 
 -- nvim-tree
@@ -222,7 +226,7 @@ vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>')
 
 -- jupynium
 require('jupynium').setup{
-	python_host = vim.g.python3_host_prog
+    python_host = vim.g.python3_host_prog
 }
 
 -- Comment

@@ -8,3 +8,4 @@
 !/zsh/.zshrc
 !/tmux/tmux.conf
 !/nvim/*
+!/dev_setup/*

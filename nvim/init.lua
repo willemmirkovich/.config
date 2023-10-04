@@ -14,14 +14,14 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
     {
-        'neovim/nvim-lspconfig',
+        'neovim/nvim-lspconfig', commit = '71b39616b14c152da34fcc787fa27f09bf280e72',
         dependencies = {
-            { 'williamboman/mason-lspconfig.nvim' },
-            { 'williamboman/mason.nvim' },
-            { 'hrsh7th/nvim-cmp' }, -- Autocompletion plugin
-            { 'hrsh7th/cmp-nvim-lsp' }, -- LSP source for nvim-cmp
-            { 'saadparwaiz1/cmp_luasnip' }, -- Snippets source for nvim-cmp
-            { 'L3MON4D3/LuaSnip' }, -- Snippets plugin
+            { 'williamboman/mason-lspconfig.nvim', tag = 'v1.17.1' },
+            { 'williamboman/mason.nvim', tag = 'v1.8.0' },
+            { 'hrsh7th/nvim-cmp', commit = '5dce1b778b85c717f6614e3f4da45e9f19f54435' }, -- Autocompletion plugin
+            { 'hrsh7th/cmp-nvim-lsp', commit = '44b16d11215dce86f253ce0c30949813c0a90765' }, -- LSP source for nvim-cmp
+            { 'saadparwaiz1/cmp_luasnip', commit = '18095520391186d634a0045dacaa346291096566' }, -- Snippets source for nvim-cmp
+            { 'L3MON4D3/LuaSnip', commit = 'ad089ed4580a65e0e4f89abb2876d7c132366713' }, -- Snippets plugin
         }
     },
     {
@@ -52,16 +52,18 @@ local plugins = {
         dependencies = { 'nvim-tree/nvim-web-devicons', commit = 'ecdeb4e2a4af34fc873bbfbf1f4c4e447e632255' }
     },
     {
-        'kiyoon/jupynium.nvim', build = 'source ~/.venv/nvim/bin/activate && pip install .',
+        'kiyoon/jupynium.nvim', commit = '5595ed8ddf4cbdccf8ac139ead5e315cceeeedfc',
+        build = 'source ~/.venv/nvim/bin/activate && pip install .',
         dependencies = {
-            'stevearc/dressing.nvim' -- UI for kernel select
+            'stevearc/dressing.nvim', -- UI for kernel select
+            commit = '8f4d62b7817455896a3c73cab642002072c114bc'
         }
     },
     {
         'numToStr/Comment.nvim', tag = 'v0.8.0'
     },
     {
-        'folke/tokyonight.nvim'
+        'folke/tokyonight.nvim', tag = 'v2.4.0'
     }
 }
 require('lazy').setup(plugins) -- can add opts

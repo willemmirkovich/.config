@@ -101,7 +101,7 @@ TABSIZE=1
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
-alias dc="docker-compose"
+alias dc="docker compose"
 alias src="source ~/.zshenv && source ~/.zshrc && source ~/.config/zsh/.zshrc"
 alias nv="nvim"
 

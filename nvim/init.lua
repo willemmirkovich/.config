@@ -177,9 +177,8 @@ local servers = {
     'jsonls', -- json
     'sqlls', -- sql
     'yamlls', -- yaml
-
-    -- NOTE: will remove after class complete
     'julials', -- julia
+    'rust_analyzer', --rust
 }
 
 -- mason-lspconfig
@@ -261,9 +260,8 @@ cmp.setup {
 require('nvim-treesitter.configs').setup{
     ensure_installed = {
         'c', 'lua', 'vim', 'vimdoc', 'query', -- should always be installed
-        'python', 'markdown_inline', 'javascript', 'typescript',
-        -- class, will remove
-        'commonlisp', 'julia', 'haskell'
+        'python', 'markdown_inline', 'javascript',
+        'typescript','julia', 'rust',
     },
     highlight = {
         enable = true

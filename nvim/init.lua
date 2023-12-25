@@ -52,14 +52,6 @@ local plugins = {
         dependencies = { 'nvim-tree/nvim-web-devicons', commit = 'ecdeb4e2a4af34fc873bbfbf1f4c4e447e632255' }
     },
     {
-        'kiyoon/jupynium.nvim', commit = '5595ed8ddf4cbdccf8ac139ead5e315cceeeedfc',
-        build = 'source ~/.venv/nvim/bin/activate && pip install .',
-        dependencies = {
-            'stevearc/dressing.nvim', -- UI for kernel select
-            commit = '8f4d62b7817455896a3c73cab642002072c114bc'
-        }
-    },
-    {
         'numToStr/Comment.nvim', tag = 'v0.8.0'
     },
     {
@@ -276,11 +268,6 @@ require('nvim-tree').setup{}
 
 -- nvim-tree keymaps
 vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>')
-
--- jupynium
-require('jupynium').setup{
-    python_host = vim.g.python3_host_prog
-}
 
 -- Comment
 require('Comment').setup{}

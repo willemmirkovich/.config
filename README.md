@@ -15,7 +15,6 @@
 - [ripgrep](https://github.com/BurntSushi/ripgrep): `brew install ripgrep`
 - [lazygit](TODO:): `brew install lazygit`
 - [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm): `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
-- [geckodriver](https://github.com/mozilla/geckodriver): `brew install geckodriver`
 
 ## Nice to have
 

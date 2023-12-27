@@ -192,7 +192,7 @@ for _, lsp in ipairs(servers) do
 end
 
 -- I am lazy and just had custom setup for this
-require('lspconfig').lua_ls.setup{
+lspconfig.lua_ls.setup{
     settings = {
         Lua = {
             diagnostics = {
@@ -204,10 +204,10 @@ require('lspconfig').lua_ls.setup{
 }
 
 -- luasnip setup
-local luasnip = require 'luasnip'
+local luasnip = require('luasnip')
 
 -- nvim-cmp setup
-local cmp = require 'cmp'
+local cmp = require('cmp')
 cmp.setup {
     snippet = {
         expand = function(args)

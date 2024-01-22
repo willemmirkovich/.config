@@ -14,22 +14,25 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
     {
-        'neovim/nvim-lspconfig', commit = '71b39616b14c152da34fcc787fa27f09bf280e72',
+        'neovim/nvim-lspconfig',
+        commit = '71b39616b14c152da34fcc787fa27f09bf280e72',
         dependencies = {
             { 'williamboman/mason-lspconfig.nvim', tag = 'v1.17.1' },
-            { 'williamboman/mason.nvim', tag = 'v1.8.0' },
-            { 'hrsh7th/nvim-cmp', commit = '5dce1b778b85c717f6614e3f4da45e9f19f54435' }, -- Autocompletion plugin
-            { 'hrsh7th/cmp-nvim-lsp', commit = '44b16d11215dce86f253ce0c30949813c0a90765' }, -- LSP source for nvim-cmp
-            { 'saadparwaiz1/cmp_luasnip', commit = '18095520391186d634a0045dacaa346291096566' }, -- Snippets source for nvim-cmp
-            { 'L3MON4D3/LuaSnip', commit = 'ad089ed4580a65e0e4f89abb2876d7c132366713' }, -- Snippets plugin
+            { 'williamboman/mason.nvim',           tag = 'v1.8.0' },
+            { 'hrsh7th/nvim-cmp',                  commit = '5dce1b778b85c717f6614e3f4da45e9f19f54435' }, -- Autocompletion plugin
+            { 'hrsh7th/cmp-nvim-lsp',              commit = '44b16d11215dce86f253ce0c30949813c0a90765' }, -- LSP source for nvim-cmp
+            { 'saadparwaiz1/cmp_luasnip',          commit = '18095520391186d634a0045dacaa346291096566' }, -- Snippets source for nvim-cmp
+            { 'L3MON4D3/LuaSnip',                  commit = 'ad089ed4580a65e0e4f89abb2876d7c132366713' }, -- Snippets plugin
         }
     },
     {
-        'nvim-treesitter/nvim-treesitter', commit = 'dfcfdb0e7bcb362c4de1ed7d0015c21957c91ba7',
+        'nvim-treesitter/nvim-treesitter',
+        commit = 'dfcfdb0e7bcb362c4de1ed7d0015c21957c91ba7',
         cmd = 'TSUpdate'
     },
     {
-        'nvim-telescope/telescope.nvim', tag = '0.1.2',
+        'nvim-telescope/telescope.nvim',
+        tag = '0.1.2',
         dependencies = { 'nvim-lua/plenary.nvim', tag = 'v0.1.3' }
     },
     {
@@ -37,18 +40,21 @@ local plugins = {
         commit = '543f090a45cef28156162883d2412fffecb6b750'
     },
     {
-        'akinsho/bufferline.nvim', tag = 'v4.3.0',
+        'akinsho/bufferline.nvim',
+        tag = 'v4.3.0',
         dependencies = { 'nvim-tree/nvim-web-devicons', commit = 'ab899311f8ae00a47eae8e0879506cead8eb1561' }
     },
     {
-        'kdheepak/lazygit.nvim', commit = '22e51e03268fabe068a77e2bd316ac25ff2084f9',
+        'kdheepak/lazygit.nvim',
+        commit = '22e51e03268fabe068a77e2bd316ac25ff2084f9',
         dependencies = { 'nvim-lua/plenary.nvim', tag = 'v0.1.3' }
     },
     {
         'nmac427/guess-indent.nvim', commit = 'b8ae749fce17aa4c267eec80a6984130b94f80b2'
     },
     {
-        'nvim-tree/nvim-tree.lua', commit = '8f48426c88cd91aa33610c96ad649f378d7bf718',
+        'nvim-tree/nvim-tree.lua',
+        commit = '8f48426c88cd91aa33610c96ad649f378d7bf718',
         dependencies = { 'nvim-tree/nvim-web-devicons', commit = 'ecdeb4e2a4af34fc873bbfbf1f4c4e447e632255' }
     },
     {
@@ -89,7 +95,7 @@ vim.opt.numberwidth = 4
 -- NOTE: vim.opt.formatoptions = ... does not work, needs autocmd
 -- fix: https://github.com/neovim/neovim/issues/14963#issuecomment-873338847
 -- discussion: https://stackoverflow.com/questions/6076592/vim-set-formatoptions-being-lost
-vim.api.nvim_create_autocmd({'FileType'}, {
+vim.api.nvim_create_autocmd({ 'FileType' }, {
     pattern = '*',
     command = 'set formatoptions-=c formatoptions-=r formatoptions-=o'
 })
@@ -107,7 +113,7 @@ vim.opt.smartcase = true
 -- NOTE: ([mode(s)], '[from]', '[to]')
 
 -- all delete operations go to black hole register
-vim.keymap.set({'n', 'v'}, 'd', '"_d')
+vim.keymap.set({ 'n', 'v' }, 'd', '"_d')
 
 -- all help commands open vertical split
 -- NOTE: do not add to normal mode, will slow down 'h' motion
@@ -141,7 +147,7 @@ vim.keymap.set('n', '<leader>fb', telescope_builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', telescope_builtin.help_tags, {})
 
 -- bufferline
-require('bufferline').setup{
+require('bufferline').setup {
     options = {
         indicator = {
             style = 'underline'
@@ -153,27 +159,27 @@ require('bufferline').setup{
 vim.keymap.set('n', '<leader>lg', ':LazyGit<CR>', {})
 
 -- guess-indent
-require('guess-indent').setup{}
+require('guess-indent').setup {}
 
 -- lsp
 -- mason
 require('mason').setup()
 local servers = {
-    'lua_ls', -- lua
-    'pyright', -- python
-    'prosemd_lsp', -- markdown
-    'bashls', -- bash
-    'dockerls', -- docker
+    'lua_ls',                          -- lua
+    'pyright',                         -- python
+    'prosemd_lsp',                     -- markdown
+    'bashls',                          -- bash
+    'dockerls',                        -- docker
     'docker_compose_language_service', -- docker-compose
-    'jsonls', -- json
-    'sqlls', -- sql
-    'yamlls', -- yaml
-    'julials', -- julia
-    'rust_analyzer', --rust
+    'jsonls',                          -- json
+    'sqlls',                           -- sql
+    'yamlls',                          -- yaml
+    'julials',                         -- julia
+    'rust_analyzer',                   --rust
 }
 
 -- mason-lspconfig
-require('mason-lspconfig').setup{
+require('mason-lspconfig').setup {
     ensure_installed = servers
 }
 
@@ -191,7 +197,7 @@ for _, lsp in ipairs(servers) do
 end
 
 -- I am lazy and just had custom setup for this
-lspconfig.lua_ls.setup{
+lspconfig.lua_ls.setup {
     settings = {
         Lua = {
             diagnostics = {
@@ -230,7 +236,7 @@ cmp.setup {
     },
     mapping = cmp.mapping.preset.insert({
         ['<C-u>'] = cmp.mapping.scroll_docs(-4), -- Up
-        ['<C-d>'] = cmp.mapping.scroll_docs(4), -- Down
+        ['<C-d>'] = cmp.mapping.scroll_docs(4),  -- Down
         -- C-b (back) C-f (forward) for snippet placeholder navigation.
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<CR>'] = cmp.mapping.confirm {
@@ -263,11 +269,11 @@ cmp.setup {
 }
 
 -- nvim-treesitter
-require('nvim-treesitter.configs').setup{
+require('nvim-treesitter.configs').setup {
     ensure_installed = {
         'c', 'lua', 'vim', 'vimdoc', 'query', -- should always be installed
         'python', 'markdown_inline', 'javascript',
-        'typescript','julia', 'rust',
+        'typescript', 'julia', 'rust',
     },
     highlight = {
         enable = true
@@ -278,10 +284,10 @@ require('nvim-treesitter.configs').setup{
 }
 
 -- nvim-tree
-require('nvim-tree').setup{}
+require('nvim-tree').setup {}
 
 -- nvim-tree keymaps
 vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>')
 
 -- Comment
-require('Comment').setup{}
+require('Comment').setup {}

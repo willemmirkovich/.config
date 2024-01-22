@@ -75,7 +75,6 @@ vim.opt.shiftwidth = 4
 vim.cmd('colorscheme tokyonight-storm')
 
 -- options
-
 vim.g.python3_host_prog = '~/.venv/nvim/bin/python'
 
 -- default yank to clibboard
@@ -202,6 +201,21 @@ lspconfig.lua_ls.setup{
     },
     capabilities = capabilities,
 }
+
+-- NOTE: took from suggested config:
+-- https://github.com/neovim/nvim-lspconfig#suggested-configuration
+vim.api.nvim_create_autocmd('LspAttach', {
+    callback = function(ev)
+        local opts = { buffer = ev.buf }
+        vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+        vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+        vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+        vim.keymap.set('n', 'gn', vim.lsp.buf.rename, opts)
+        vim.keymap.set('n', 'gf', function()
+            vim.lsp.buf.format { async = true }
+        end, opts)
+    end
+})
 
 -- luasnip setup
 local luasnip = require('luasnip')

@@ -453,8 +453,12 @@ font:
 #   - (Windows) powershell
 shell:
   program: /usr/local/bin/tmux
-    # args:
-    # - --login
+  args:
+    - new-session
+    - -A
+    - -D
+    - -s
+    - main
 
 # Startup directory
 #

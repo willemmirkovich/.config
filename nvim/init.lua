@@ -31,8 +31,7 @@ local plugins = {
         cmd = 'TSUpdate'
     },
     {
-        'nvim-telescope/telescope.nvim',
-        tag = '0.1.2',
+        'nvim-telescope/telescope.nvim', tag = '0.1.2',
         dependencies = { 'nvim-lua/plenary.nvim', tag = 'v0.1.3' }
     },
     {
@@ -62,6 +61,11 @@ local plugins = {
     },
     {
         'folke/tokyonight.nvim', tag = 'v2.4.0'
+    },
+    {
+        'vidocqh/data-viewer.nvim', commit = '40ddf37bb7ab6c04ff9e820812d1539afe691668',
+        dependencies = { 'nvim-lua/plenary.nvim', tag = 'v0.1.3' }
+
     }
 }
 require('lazy').setup(plugins) -- can add opts
@@ -291,3 +295,8 @@ vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>')
 
 -- Comment
 require('Comment').setup {}
+
+-- Data-Viewer
+require('data-viewer').setup {
+    columnColorEnable = false
+}

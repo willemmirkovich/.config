@@ -4,6 +4,9 @@ export PATH=$HOME/bin:$HOME/.config/bin:/usr/local/bin:$PATH
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
+export POETRY_VIRTUALENVS_PATH=$HOME/.venv
+export POETRY_VIRTUALENVS_PREFER_ACTIVE_PYTHON=true
+
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/

@@ -3,22 +3,23 @@
 ## Requirements
 
 - [brew installer](https://brew.sh/): Available for Mac/Linux
-- [alacritty terminal emulator](https://alacritty.org/): `brew install alacritty`
-- [neovim editor](https://neovim.io/): `brew install neovim`
-- [node/npm](TODO:): `brew install node`
 - [ohmyzsh](https://github.com/ohmyzsh/ohmyzsh/wiki#welcome-to-oh-my-zsh)
-- [font-hack-nerd](https://www.nerdfonts.com/)
-    - `brew tap homebrew/cask-fonts`
-    - `brew install --cask font-hack-nerd-font`
-- [starship](https://starship.rs/): `brew install starship`
-- [tmux](https://github.com/tmux/tmux): `brew install tmux`
-- [ripgrep](https://github.com/BurntSushi/ripgrep): `brew install ripgrep`
-- [lazygit](TODO:): `brew install lazygit`
+- [brew packages]: 
+    - [alacritty terminal emulator](https://alacritty.org/)
+    - [neovim editor](https://neovim.io/)
+    - [node/npm](TODO:)
+    - [font-hack-nerd](https://www.nerdfonts.com/)
+    - [starship](https://starship.rs/)
+    - [tmux](https://github.com/tmux/tmux)
+    - [ripgrep](https://github.com/BurntSushi/ripgrep)
+    - [lazygit](TODO:)
+    - [btop](https://github.com/aristocratos/btop)
+    - [luarocks](https://luarocks.org/)
+    ```sh
+    brew instal alacritty neovim node font-hack-nerd-font \
+    starship tmux ripgrep lazygit btop luarocks
+    ```
 - [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm): `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
-
-## Nice to have
-
-- [btop](https://github.com/aristocratos/btop): `brew install btop`
 
 ## Setup
 

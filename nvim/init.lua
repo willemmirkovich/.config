@@ -40,7 +40,7 @@ local plugins = {
     },
     {
         'akinsho/bufferline.nvim',
-        tag = 'v4.3.0',
+        tag = 'v4.9.1',
         dependencies = { 'nvim-tree/nvim-web-devicons', commit = 'ab899311f8ae00a47eae8e0879506cead8eb1561' }
     },
     {

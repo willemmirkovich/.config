@@ -15,9 +15,13 @@
     - [lazygit](TODO:)
     - [btop](https://github.com/aristocratos/btop)
     - [luarocks](https://luarocks.org/)
+    - [pyenv](https://github.com/pyenv/pyenv)
+    - [lzip](TODO:): required for pyenv
     ```sh
     brew instal alacritty neovim node font-hack-nerd-font \
-    starship tmux ripgrep lazygit btop luarocks
+    starship tmux ripgrep lazygit btop luarocks pyenv
+    # pyenv required
+    brew readline xz
     ```
 - [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm): `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
 
@@ -33,14 +37,13 @@ ZDOTDIR=~/.config/zsh
 ```
 3. Create `venv` for neovim to use
 ```sh
-brew insatll pyenv
 # https://github.com/pyenv/pyenv#set-up-your-shell-environment-for-pyenv
 echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
 echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
 echo 'eval "$(pyenv init -)"' >> ~/.zshrc
 src # reload shell with new path
-pyenv install 3.11.5
-pyenv global 3.11.5
+pyenv install 3.11
+pyenv global 3.11
 which python # verify looking at right place
 python -m venv ~/.venv/nvim
 venv_activate nvim

@@ -15,14 +15,14 @@ vim.opt.rtp:prepend(lazypath)
 local plugins = {
     {
         'neovim/nvim-lspconfig',
-        commit = '71b39616b14c152da34fcc787fa27f09bf280e72',
+        tag = 'v1.8.0',
         dependencies = {
-            { 'williamboman/mason-lspconfig.nvim', tag = 'v1.17.1' },
-            { 'williamboman/mason.nvim',           tag = 'v1.8.0' },
-            { 'hrsh7th/nvim-cmp',                  commit = '5dce1b778b85c717f6614e3f4da45e9f19f54435' }, -- Autocompletion plugin
-            { 'hrsh7th/cmp-nvim-lsp',              commit = '44b16d11215dce86f253ce0c30949813c0a90765' }, -- LSP source for nvim-cmp
-            { 'saadparwaiz1/cmp_luasnip',          commit = '18095520391186d634a0045dacaa346291096566' }, -- Snippets source for nvim-cmp
-            { 'L3MON4D3/LuaSnip',                  commit = 'ad089ed4580a65e0e4f89abb2876d7c132366713' }, -- Snippets plugin
+            { 'williamboman/mason-lspconfig.nvim', tag = 'v1.32.0' },
+            { 'williamboman/mason.nvim',           tag = 'v1.11.0' },
+            { 'hrsh7th/nvim-cmp',                  tag = 'v0.0.2' }, -- Autocompletion plugin
+            { 'hrsh7th/cmp-nvim-lsp',              commit = 'a8912b88ce488f411177fc8aed358b04dc246d7b' }, -- LSP source for nvim-cmp
+            { 'saadparwaiz1/cmp_luasnip',          commit = '98d9cb5c2c38532bd9bdb481067b20fea8f32e90' }, -- Snippets source for nvim-cmp
+            { 'L3MON4D3/LuaSnip',                  tag = 'v2.3.0' }, -- Snippets plugin
         }
     },
     {
@@ -31,8 +31,9 @@ local plugins = {
         cmd = 'TSUpdate'
     },
     {
-        'nvim-telescope/telescope.nvim', tag = '0.1.2',
-        dependencies = { 'nvim-lua/plenary.nvim', tag = 'v0.1.3' }
+        'nvim-telescope/telescope.nvim',
+        tag = '0.1.8',
+        dependencies = { 'nvim-lua/plenary.nvim', tag = 'v0.1.4' }
     },
     {
         'alexghergh/nvim-tmux-navigation',
@@ -46,7 +47,7 @@ local plugins = {
     {
         'kdheepak/lazygit.nvim',
         commit = '22e51e03268fabe068a77e2bd316ac25ff2084f9',
-        dependencies = { 'nvim-lua/plenary.nvim', tag = 'v0.1.3' }
+        dependencies = { 'nvim-lua/plenary.nvim', tag = 'v0.1.4' }
     },
     {
         'nmac427/guess-indent.nvim', commit = 'b8ae749fce17aa4c267eec80a6984130b94f80b2'
@@ -63,8 +64,9 @@ local plugins = {
         'folke/tokyonight.nvim', tag = 'v2.4.0'
     },
     {
-        'vidocqh/data-viewer.nvim', commit = '40ddf37bb7ab6c04ff9e820812d1539afe691668',
-        dependencies = { 'nvim-lua/plenary.nvim', tag = 'v0.1.3' }
+        'vidocqh/data-viewer.nvim',
+        commit = '40ddf37bb7ab6c04ff9e820812d1539afe691668',
+        dependencies = { 'nvim-lua/plenary.nvim', tag = 'v0.1.4' }
 
     }
 }

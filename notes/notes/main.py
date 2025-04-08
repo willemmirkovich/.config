@@ -1,4 +1,4 @@
-from os import getenv, path, mkdir
+from os import getenv, path, mkdir, makedirs
 from argparse import ArgumentParser, Namespace
 from jinja2 import Environment, FileSystemLoader
 from datetime import datetime
@@ -17,12 +17,36 @@ env = Environment(
 def _normalize_name(name: str):
     return name.strip().lower().replace(' ', '_')
 
+def _format_date(dt: datetime) -> str:
+    return dt.strftime('%Y%m%d')
 
-def _current_timpestamp() -> Tuple[str, str]:
-    dt = datetime.now()
-    date = dt.strftime('%Y%m%d')
-    timestamp = dt.strftime('%b %d, %Y %H:%M')
-    return date, timestamp 
+def _format_timpestamp(dt: datetime) -> str:
+    return dt.strftime('%b %d, %Y %H:%M')
+
+def daily_log(args: Namespace):
+    
+    try:
+        date = args.date
+        dt = datetime.fromisoformat(date)
+    except (AttributeError, TypeError):
+        dt = datetime.now().date()
+
+
+    year, month, day = str(dt.year), str(dt.month), str(dt.day)
+    weekday = dt.strftime('%A').lower()
+    ts = _format_timpestamp(dt)
+
+    dir = path.join(WORK_DIR, 'daily_logs', year, month)
+    makedirs(dir, exist_ok=True)
+
+    file_name = f'{day}_{weekday}.md'
+    file_path = path.join(dir, file_name)
+
+    template = env.get_template('daily_log.jinja.md')
+
+    with open(file_path, 'w') as f:
+        data = template.render(date=ts)
+        f.write(data)
 
 
 def meeting(args: Namespace):
@@ -40,7 +64,9 @@ def meeting(args: Namespace):
     
     template = env.get_template('meeting.jinja.md')
 
-    date, ts = _current_timpestamp()
+    dt = datetime.now()
+    date = _format_date(dt)
+    ts = _format_timpestamp(dt)
     clean_name = _normalize_name(name)
     file_name = f'{clean_name}_{date}.md'
     file_path = path.join(dir, file_name)
@@ -58,12 +84,13 @@ def main():
         raise ValueError(f'{WORK_DIR} is not a valid directory')
 
     parser = ArgumentParser()
-    parser.add_argument('template')
+    parser.add_argument('-t', '--template', required=False)
 
     # meeting template
     parser.add_argument('--name')
 
     # daily log template
+    parser.add_argument('--date', help='iso formatted date (yyyy-mm-dd)')
 
     args = parser.parse_args()
 
@@ -73,8 +100,10 @@ def main():
     match template:
         case 'meeting':
             meeting(args)
+        case 'daily_log':
+            daily_log(args)
         case _:
-            raise ValueError(f'template {template} is not handled')
+            daily_log(args)
 
 
 if __name__ == "__main__":

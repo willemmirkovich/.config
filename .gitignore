@@ -1,6 +1,7 @@
 # Ignore everything in subdirs or by filetype in top dir
 /*/*
 /*.log
+**/__pycache__
 
 # Include these subdirs/subdir files
 !/bin/*
@@ -9,3 +10,4 @@
 !/tmux/tmux.conf
 !/nvim/*
 !/dev_setup/*
+!/notes/*

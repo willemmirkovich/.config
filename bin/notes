@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+cd $HOME/.config/notes
+
+# bootstrap install of deps
+if ( ! poetry install > /dev/null && eval $(poetry env activate) ); then
+    echo "Error while  script env, see logs above"
+    exit 1
+else
+    eval $(poetry env activate) && python notes/main.py "$@"
+fi

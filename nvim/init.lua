@@ -19,10 +19,10 @@ local plugins = {
         dependencies = {
             { 'williamboman/mason-lspconfig.nvim', tag = 'v1.32.0' },
             { 'williamboman/mason.nvim',           tag = 'v1.11.0' },
-            { 'hrsh7th/nvim-cmp',                  tag = 'v0.0.2' }, -- Autocompletion plugin
+            { 'hrsh7th/nvim-cmp',                  tag = 'v0.0.2' },                                      -- Autocompletion plugin
             { 'hrsh7th/cmp-nvim-lsp',              commit = 'a8912b88ce488f411177fc8aed358b04dc246d7b' }, -- LSP source for nvim-cmp
             { 'saadparwaiz1/cmp_luasnip',          commit = '98d9cb5c2c38532bd9bdb481067b20fea8f32e90' }, -- Snippets source for nvim-cmp
-            { 'L3MON4D3/LuaSnip',                  tag = 'v2.3.0' }, -- Snippets plugin
+            { 'L3MON4D3/LuaSnip',                  tag = 'v2.3.0' },                                      -- Snippets plugin
         }
     },
     {
@@ -68,6 +68,16 @@ local plugins = {
         commit = '40ddf37bb7ab6c04ff9e820812d1539afe691668',
         dependencies = { 'nvim-lua/plenary.nvim', tag = 'v0.1.4' }
 
+    },
+    {
+        "amitds1997/remote-nvim.nvim",
+        version = "v0.3.11",
+        dependencies = {
+            "nvim-lua/plenary.nvim",    -- For standard functions
+            "MunifTanjim/nui.nvim",     -- To build the plugin UI
+            "nvim-telescope/telescope.nvim", -- For picking b/w different remote methods
+        },
+        config = true,
     }
 }
 require('lazy').setup(plugins) -- can add opts

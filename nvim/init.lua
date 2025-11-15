@@ -73,8 +73,8 @@ local plugins = {
         "amitds1997/remote-nvim.nvim",
         version = "v0.3.11",
         dependencies = {
-            "nvim-lua/plenary.nvim",    -- For standard functions
-            "MunifTanjim/nui.nvim",     -- To build the plugin UI
+            "nvim-lua/plenary.nvim",         -- For standard functions
+            "MunifTanjim/nui.nvim",          -- To build the plugin UI
             "nvim-telescope/telescope.nvim", -- For picking b/w different remote methods
         },
         config = true,
@@ -222,6 +222,16 @@ lspconfig.lua_ls.setup {
         }
     },
     capabilities = capabilities,
+}
+
+lspconfig.rust_analyzer.setup {
+    settings = {
+        ['rust-analyzer'] = {
+            diagnostics = {
+                disabled = { 'unlinked-file' }
+            }
+        }
+    }
 }
 
 -- NOTE: took from suggested config:

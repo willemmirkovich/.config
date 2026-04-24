@@ -78,6 +78,11 @@ local plugins = {
             "nvim-telescope/telescope.nvim", -- For picking b/w different remote methods
         },
         config = true,
+    },
+    {
+        "diogo464/hotreload.nvim",
+        commit = "76f1c8bd1afaa13a22756c736478144fa38f75f8",
+        opts = {} -- Uses fs_event watchers by default
     }
 }
 require('lazy').setup(plugins) -- can add opts

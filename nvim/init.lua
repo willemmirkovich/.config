@@ -229,6 +229,21 @@ lspconfig.lua_ls.setup {
     capabilities = capabilities,
 }
 
+-- use the currently activated venv to resolve imports, else python3_host_prog
+lspconfig.pyright.setup {
+    capabilities = capabilities,
+    before_init = function(_, config)
+        local venv = os.getenv('VIRTUAL_ENV')
+        local python = vim.fn.expand(vim.g.python3_host_prog)
+        if venv and venv ~= '' then
+            python = venv .. '/bin/python'
+        end
+        config.settings = config.settings or {}
+        config.settings.python = config.settings.python or {}
+        config.settings.python.pythonPath = python
+    end,
+}
+
 lspconfig.rust_analyzer.setup {
     settings = {
         ['rust-analyzer'] = {
